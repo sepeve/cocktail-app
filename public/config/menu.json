@@ -1,0 +1,32 @@
+[
+    {
+        "label": "Cócteles",
+        "description": "Explorar la colección completa de cócteles",
+        "path": "drink",
+        "icon": "lucideMartini"
+    },
+    {
+        "label": "Cócteles Emblemáticos",
+        "description": "Clásicos atemporales que merece la pena conocer",
+        "path": "signature",
+        "icon": "lucideAward"
+    },
+    {
+        "label": "Últimos Cócteles",
+        "description": "Últimos cócteles añadidos",
+        "path": "latest",
+        "icon": "matFiberNewOutline"
+    },
+    {
+        "label": "Cóctel Aleatorio",
+        "description": "Descubre un nuevo cóctel de manera aletoria",
+        "path": "random",
+        "icon": "matAutorenewFillOutline"
+    },
+    {
+        "label": "Mocktails",
+        "description": "Cócteles sin alcohol",
+        "path": "mocktail",
+        "icon": "matDoNotDisturbOnOutline"
+    }
+]

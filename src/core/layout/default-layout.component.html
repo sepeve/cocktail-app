@@ -1,0 +1,15 @@
+<main class="flex min-h-dvh bg-background" [ngClass]="{ 'layout--hidden': isSidenavHidden() }">
+    <button class="logo-glow flex gap-2 p-4 h-12" (click)="onSidenavOpenChange(false)">
+        <img class="size-8 cursor-pointer logo-glass" src="/images/logo_glass.png" alt="logo"/>
+    </button>
+
+    <app-sidenav [sidenavOpened]="!isSidenavHidden()" [menu]="menu()" (sidenavClose)="onSidenavOpenChange(true)"></app-sidenav>
+
+    <section class="flex flex-col shrink min-w-0 w-full h-dvh">
+        <div class="layout__body flex items-center justify-center h-full">
+            <app-loader [isLoading]="isLoading()"></app-loader>
+            <router-outlet></router-outlet>
+        </div>
+    </section>
+
+</main>

@@ -1,0 +1,5 @@
+<div class="flex flex-col cursor-pointer bg-secondary p-8 rounded-lg text-primary-alt2 hover:shadow-md" (click)="menuItemClicked.emit(menuItem().path)">
+    <ng-icon [name]="menuItem().icon"></ng-icon>
+    <span>{{ menuItem().label }}</span>
+    <span>{{ menuItem().description }}</span>
+</div>

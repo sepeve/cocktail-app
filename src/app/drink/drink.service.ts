@@ -1,0 +1,22 @@
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { AppConfigService } from '../../core/services';
+import { Observable } from 'rxjs';
+import { Drink } from '../../models';
+
+@Injectable()
+export class DrinkService {
+    http: HttpClient = inject(HttpClient);
+    appConfig: AppConfigService = inject(AppConfigService);
+    API_URL = this.appConfig.apiURL;
+
+    get(name: string): Observable<Drink[]> {
+        const url = `${this.API_URL}/search.php?s=${name}`;
+        return this.http.get<Drink[]>(url);
+    }
+
+    getById(id: string): Observable<Drink | null> {
+        const url = `${this.API_URL}/lookup.php?l=${id}`;
+        return this.http.get<Drink | null>(url);
+    }
+}
