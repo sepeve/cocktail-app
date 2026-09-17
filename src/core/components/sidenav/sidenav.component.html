@@ -1,15 +1,22 @@
-<aside class="flex shrink-0 fixed top-0 left-0 h-dvh z-10 bg-primary-alt2 transition-all duration-700 ease-in-out w-(--sidenav-width)">
-    @if(sidenavOpened()) {
-        <div class="flex flex-col p-4 gap-4 text-xl text-secondary">
-            @for(menuItem of menu(); track menuItem) {
-                <a [routerLink]="menuItem.path" routerLinkActive="font-semibold" class="flex items-center gap-2 cursor-pointer hover:font-semibold" href="javascript:void(0);">
-                    <ng-icon [name]="menuItem.icon" color="#e07bb2" />
-                    <span>{{ menuItem.label }}</span>
-                </a>
-            }
-            <button class="mt-auto ml-auto cursor-pointer" (click)="sidenavClose.emit()">
-                <ng-icon name="matChevronBackwardSharp" color="#e07bb2" />
+<z-drawer [zVisible]="sidenavOpened()" (zVisibleChange)="sidenavClose.emit()" zPlacement="left">
+    <div class="flex flex-col p-4 gap-4 text-lg">
+        @for(menuItem of menu(); track menuItem) {
+        <a [routerLink]="menuItem.path" routerLinkActive="font-semibold"
+            class="flex items-center gap-2 cursor-pointer hover:font-semibold" href="javascript:void(0);">
+            <ng-icon [name]="menuItem.icon" />
+            <span>{{ menuItem.label }}</span>
+        </a>
+        }
+    </div>
+    <z-drawer-footer>
+        <div class="flex justify-between">
+            <button class="cursor-pointer" z-button zType="ghost" zSize="sm" (click)="toggleTheme()">
+                <ng-icon [name]="darkMode.themeMode() === 'dark' ? 'lucideSun': 'lucideMoon'" size="1.5rem" />
+                <span class="sr-only">Toggle theme</span>
+            </button>
+            <button class="cursor-pointer" type="button" z-button zType="outline" z-drawer-close>
+                <ng-icon name="matChevronBackwardSharp" size="2rem" />
             </button>
         </div>
-    }
-</aside>
+    </z-drawer-footer>
+</z-drawer>

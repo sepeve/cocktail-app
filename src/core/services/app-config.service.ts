@@ -13,6 +13,10 @@ export class AppConfigService {
         return this.config.apiURL;
     }
 
+    get apiKey(): string {
+        return this.config.apiKey;
+    }
+
     get production(): boolean {
         return this.config.production;
     }

@@ -2,16 +2,21 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { AppConfigService } from '../../core/services';
 import { Observable } from 'rxjs';
-import { Drink } from '../../models';
+import { Drink, Letter } from '../../models';
 
 @Injectable()
 export class DrinkService {
     http: HttpClient = inject(HttpClient);
     appConfig: AppConfigService = inject(AppConfigService);
-    API_URL = this.appConfig.apiURL;
+    API_URL = `${this.appConfig.apiURL}/${this.appConfig.apiKey}`;
 
     get(name: string): Observable<Drink[]> {
         const url = `${this.API_URL}/search.php?s=${name}`;
+        return this.http.get<Drink[]>(url);
+    }
+
+    getByLetter(letter: Letter): Observable<Drink[]> {
+        const url = `${this.API_URL}/search.php?f=${letter}`;
         return this.http.get<Drink[]>(url);
     }
 

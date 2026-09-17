@@ -1,12 +1,12 @@
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { ColorScheme } from '../../models/enums/color-scheme.enum'
-import { withLogger } from '../../shared/@store/with-logger';
 import { Menu } from '../../models';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { tapResponse } from '@ngrx/operators';
 import { pipe, switchMap, tap } from 'rxjs';
 import { MenuService } from '../services/menu.service';
 import { inject } from '@angular/core';
+import { withLogger } from '@/shared/@store/with-logger';
 
 const STORE_NAME: string = "CoreStore";
 

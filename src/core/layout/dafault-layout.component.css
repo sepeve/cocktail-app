@@ -1,6 +1,5 @@
 
 .layout__body {
-    width: calc(100vw - var(--sidenav-width));
     margin-left: var(--sidenav-width);
     padding-left: var(--content-spacing-y);
     padding-right: var(--content-spacing-x);
@@ -8,10 +7,6 @@
     padding-bottom: var(--content-spacing-y);
     transition: 0.15s padding;
 }
-/*
-layout--hidden {
-    --sidenav-width: 0px;
-} */
 
 .sidenav__container {
   grid-template-columns: 0fr;

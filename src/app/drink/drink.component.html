@@ -1,1 +1,37 @@
-<h1>DRINK</h1>
+<div class="flex flex-col h-full">
+    <div class="flex gap-2 justify-center mt-8">
+        @for(letter of letterDictionary(); track letter.value) {
+        <button class="cursor-pointer" type="button" z-button [aria-label]="letter.value"
+            (click)="onLetterClick(letter.value)">
+            {{ letter.key }}
+        </button>
+        }
+    </div>
+
+    <app-cocktail-list [cocktails]="drinks()" (cocktailClicked)="onDrinkClicked($event)"></app-cocktail-list>
+
+    <z-pagination class="mt-auto mb-8" [zTotal]="drinkStore.totalPages()" [zPageIndex]="drinkStore.pageIndex()"
+        [zContent]="content" />
+</div>
+
+<ng-template #content>
+    <ul z-pagination-content>
+        <li z-pagination-item>
+            <z-pagination-previous class="cursor-pointer" (click)="drinkStore.nextPage()"
+                [zDisabled]="!drinkStore.hasPrevPage()" />
+        </li>
+        @for (page of pages(); track page) {
+        <li z-pagination-item>
+            <button type="button" z-pagination-button class="cursor-pointer"
+                [zActive]="page === drinkStore.pageIndex() + 1" (click)="drinkStore.setPage(page - 1)">
+                <span class="sr-only">To page</span>
+                {{ page }}
+            </button>
+        </li>
+        }
+        <li z-pagination-item>
+            <z-pagination-next class="cursor-pointer" (click)="drinkStore.nextPage()"
+                [zDisabled]="!drinkStore.hasNextPage()" />
+        </li>
+    </ul>
+</ng-template>
