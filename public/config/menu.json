@@ -3,36 +3,36 @@
         "label": "Home",
         "description": "",
         "path": "",
-        "icon": "matHomeOutline"
+        "icon": "home"
     },
     {
         "label": "Cocktails",
         "description": "Explore the full cokctail database",
         "path": "drink",
-        "icon": "lucideMartini"
+        "icon": "glass"
     },
     {
         "label": "Top Cocktails",
         "description": "Timeless classics worth knowing",
         "path": "signature",
-        "icon": "lucideAward"
+        "icon": "award"
     },
     {
         "label": "Last Added",
         "description": "Last added cocktails",
         "path": "latest",
-        "icon": "matFiberNewOutline"
+        "icon": "latest"
     },
     {
         "label": "Random Cocktail",
         "description": "Discover a new cocktail randomly",
         "path": "random",
-        "icon": "matAutorenewFillOutline"
+        "icon": "random"
     },
     {
         "label": "Mocktails",
         "description": "Cocktails without alcohol",
         "path": "mocktail",
-        "icon": "matDoNotDisturbOnOutline"
+        "icon": "not"
     }
 ]

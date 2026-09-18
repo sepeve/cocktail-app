@@ -11,11 +11,11 @@
     <z-drawer-footer>
         <div class="flex justify-between">
             <button class="cursor-pointer" z-button zType="ghost" zSize="sm" (click)="toggleTheme()">
-                <ng-icon [name]="darkMode.themeMode() === 'dark' ? 'lucideSun': 'lucideMoon'" size="1.5rem" />
+                <ng-icon [name]="darkMode.themeMode() === 'dark' ? 'sun': 'moon'" size="1.5rem" />
                 <span class="sr-only">Toggle theme</span>
             </button>
             <button class="cursor-pointer" type="button" z-button zType="outline" z-drawer-close>
-                <ng-icon name="matChevronBackwardSharp" size="2rem" />
+                <ng-icon name="chevron-left" size="2rem" />
             </button>
         </div>
     </z-drawer-footer>
