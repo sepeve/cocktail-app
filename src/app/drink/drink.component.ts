@@ -6,12 +6,14 @@ import { CocktailListComponent } from '../../core/components/cocktail-list/cockt
 import { ZardPaginationImports } from '@/shared/components/pagination';
 import { LetterFilterComponent } from '../../core/components/letter-filter/letter-filter.component';
 import { NgTemplateOutlet } from '@angular/common';
+import { SearcherComponent } from '@/core/components/searcher/searcher.component';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: "app-drink",
     templateUrl: "./drink.component.html",
     providers: [DrinkStore, DrinkService],
-    imports: [ZardPaginationImports, CocktailListComponent, LetterFilterComponent, NgTemplateOutlet],
+    imports: [ZardPaginationImports, CocktailListComponent, LetterFilterComponent, SearcherComponent],
 })
 
 export class DrinkComponent implements OnInit {
@@ -24,12 +26,18 @@ export class DrinkComponent implements OnInit {
         const endIndex = startIndex + this.drinkStore.pageSize();
         return this.drinkStore.drinks().slice(startIndex, endIndex);
     });
+    letterChanged: Subject<void> = new Subject<void>();
 
     ngOnInit(): void {
         this.loadDrinksByLetter(Letter.A);
     }
 
+    ngOnDestroy(): void {
+        this.letterChanged.complete();
+    }
+
     onLetterClick(value: Letter): void {
+        this.letterChanged.next();
         this.loadDrinksByLetter(value);
     }
 

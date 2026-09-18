@@ -1,4 +1,5 @@
-<z-card zSize="sm" class="mx-auto w-full max-w-sm cursor-pointer" (click)="menuItemClicked.emit(menuItem().path)">
+<z-card class="px-4 cursor-pointer border border-primary hover:border-pink-400"
+    (click)="menuItemClicked.emit(menuItem().path)">
     <z-card-header>
         <ng-icon [name]="menuItem().icon" size="2rem"></ng-icon>
     </z-card-header>

@@ -1,6 +1,7 @@
 import { Component, computed, input, output } from '@angular/core';
 import { Drink } from '../../../models';
 import { ZardCardImports } from '@/shared/components/card/card.imports';
+import { getCocktailIngredients } from '@/core/helpers/cocktail.helper';
 
 @Component({
     selector: "app-cocktail-card",
@@ -11,15 +12,5 @@ import { ZardCardImports } from '@/shared/components/card/card.imports';
 export class CocktailCardComponent {
     cocktail = input.required<Drink>()
     cocktailClicked = output<void>();
-
-    ingredients = computed(() => {
-        const ingredients: string[] = [];
-        for (let i = 1; i <= 15; i++) {
-            const ingredient = this.cocktail()[`strIngredient${i}` as keyof Drink];
-            if (ingredient?.length) {
-                ingredients.push(ingredient);
-            }
-        }
-        return ingredients;
-    })
+    ingredients = computed(() => getCocktailIngredients(this.cocktail()));
 }

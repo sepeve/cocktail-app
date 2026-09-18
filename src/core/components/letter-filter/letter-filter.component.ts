@@ -9,7 +9,6 @@ import { ZardButtonComponent } from '@/shared/components/button/button.component
 })
 
 export class LetterFilterComponent {
-
     letters = Letter;
     letterDictionary: Signal<LetterDictionary[]> = computed(() => (Object.entries(Letter) as [keyof typeof Letter, Letter][]).map(
         ([key, value]) => ({ key, value })
