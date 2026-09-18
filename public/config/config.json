@@ -1,5 +1,5 @@
 {
-    "production": false,
+    "production": true,
     "apiURL": "{{API_URL}}",
     "apiKey": "{{API_KEY}}"
 }
