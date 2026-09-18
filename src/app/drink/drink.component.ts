@@ -1,17 +1,17 @@
-import { Component, computed, inject, OnInit, signal, Signal } from '@angular/core';
+import { Component, computed, inject, OnInit, Signal } from '@angular/core';
 import { DrinkStore } from './drink.store';
-import { Drink, Letter, LetterDictionary } from '../../models';
+import { Drink, Letter } from '../../models';
 import { DrinkService } from './drink.service';
-import { ZardButtonComponent } from '@/shared/components/button';
 import { CocktailListComponent } from '../../core/components/cocktail-list/cocktail-list.component';
 import { ZardPaginationImports } from '@/shared/components/pagination';
 import { LetterFilterComponent } from '../../core/components/letter-filter/letter-filter.component';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
     selector: "app-drink",
     templateUrl: "./drink.component.html",
     providers: [DrinkStore, DrinkService],
-    imports: [ZardPaginationImports, CocktailListComponent, LetterFilterComponent]
+    imports: [ZardPaginationImports, CocktailListComponent, LetterFilterComponent, NgTemplateOutlet],
 })
 
 export class DrinkComponent implements OnInit {

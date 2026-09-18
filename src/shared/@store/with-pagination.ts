@@ -1,5 +1,4 @@
 import { patchState, signalStoreFeature, withComputed, withMethods, withState } from '@ngrx/signals';
-import { Pagination } from '../../../models/interfaces/core/pagination.model';
 
 export interface PaginationState {
     pageIndex: number;

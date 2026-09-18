@@ -1,13 +1,17 @@
 <div class="flex flex-col">
     <app-letter-filter (letterClicked)="onLetterClick($event)"></app-letter-filter>
-    <z-pagination class="my-8" [zTotal]="drinkStore.totalPages()" [zPageIndex]="drinkStore.pageIndex()"
-        [zContent]="content" />
+
+    <ng-container *ngTemplateOutlet="pagination"></ng-container>
 
     <app-cocktail-list [cocktails]="paginatedDrinks()" (cocktailClicked)="onDrinkClicked($event)"></app-cocktail-list>
 
+    <ng-container *ngTemplateOutlet="pagination"></ng-container>
+</div>
+
+<ng-template #pagination>
     <z-pagination class="my-8" [zTotal]="drinkStore.totalPages()" [zPageIndex]="drinkStore.pageIndex()"
         [zContent]="content" />
-</div>
+</ng-template>
 
 <ng-template #content>
     <ul z-pagination-content>
