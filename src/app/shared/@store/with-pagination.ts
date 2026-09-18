@@ -11,7 +11,7 @@ export interface PaginationState {
 export function withPagination(initial: Partial<PaginationState> = {}) {
     const defaultState: PaginationState = {
         pageIndex: 0,
-        pageSize: 10,
+        pageSize: 0,
         totalItems: 0,
         totalPages: 0,
         ...initial,

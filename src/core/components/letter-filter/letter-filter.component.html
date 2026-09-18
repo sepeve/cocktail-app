@@ -1,0 +1,8 @@
+<div class="flex gap-2 justify-center mt-8">
+    @for(letter of letterDictionary(); track letter.value) {
+    <button class="cursor-pointer" type="button" z-button zType="outline" [aria-label]="letter.value"
+        (click)="letterClicked.emit(letter.value)">
+        {{ letter.key }}
+    </button>
+    }
+</div>

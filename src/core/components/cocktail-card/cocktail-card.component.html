@@ -1,0 +1,22 @@
+<z-card
+    class="cursor-pointer transform transition-transform duration-300 hover:scale-102 hover:shadow-lg hover:border hover:border-pink-400"
+    (click)="cocktailClicked.emit()">
+    <img [src]="cocktail().strDrinkThumb" [alt]="cocktail().strDrink" />
+
+    <z-card-header>
+        <z-card-title [zTitle]="cocktail().strDrink" />
+        <z-card-description [zDescription]="cocktail().strCategory" />
+    </z-card-header>
+
+    <div z-card-content>
+        <div class="flex flex-col">
+            <span class="text-sm text-gray-400">{{ cocktail().strGlass }}</span>
+            @if(ingredients().length > 0) {
+            <div class="flex gap-1 text-sm text-gray-400">
+                <span>{{ ingredients().length }}</span>
+                <span>Ingredients</span>
+            </div>
+            }
+        </div>
+    </div>
+</z-card>

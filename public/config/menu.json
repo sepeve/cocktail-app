@@ -1,31 +1,37 @@
 [
     {
-        "label": "Cócteles",
-        "description": "Explorar la colección completa de cócteles",
+        "label": "Home",
+        "description": "",
+        "path": "",
+        "icon": "matHomeOutline"
+    },
+    {
+        "label": "Cocktails",
+        "description": "Explore the full cokctail database",
         "path": "drink",
         "icon": "lucideMartini"
     },
     {
-        "label": "Cócteles Emblemáticos",
-        "description": "Clásicos atemporales que merece la pena conocer",
+        "label": "Top Cocktails",
+        "description": "Timeless classics worth knowing",
         "path": "signature",
         "icon": "lucideAward"
     },
     {
-        "label": "Últimos Cócteles",
-        "description": "Últimos cócteles añadidos",
+        "label": "Last Added",
+        "description": "Last added cocktails",
         "path": "latest",
         "icon": "matFiberNewOutline"
     },
     {
-        "label": "Cóctel Aleatorio",
-        "description": "Descubre un nuevo cóctel de manera aletoria",
+        "label": "Random Cocktail",
+        "description": "Discover a new cocktail randomly",
         "path": "random",
         "icon": "matAutorenewFillOutline"
     },
     {
         "label": "Mocktails",
-        "description": "Cócteles sin alcohol",
+        "description": "Cocktails without alcohol",
         "path": "mocktail",
         "icon": "matDoNotDisturbOnOutline"
     }

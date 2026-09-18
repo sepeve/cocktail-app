@@ -28,7 +28,7 @@ export const DrinkStore = signalStore(
     withProps(() => ({
         _drinkService: inject(DrinkService)
     })),
-    withPagination({ totalItems: 25 }),
+    withPagination({ pageSize: 25 }),
     withMethods(((store) => ({
         loadDrinks: rxMethod<string>(
             pipe(

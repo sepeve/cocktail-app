@@ -9,7 +9,7 @@ import { loaderInterceptor } from '../core/interceptors/loader.interceptor';
 import { provideIcons, provideNgIconsConfig } from '@ng-icons/core';
 import { matChevronBackwardSharp } from '@ng-icons/material-symbols/sharp';
 import { lucideAward, lucideMartini, lucideMoon, lucideSun } from '@ng-icons/lucide';
-import { matFiberNewOutline, matAutorenewFillOutline, matDoNotDisturbOnOutline } from '@ng-icons/material-symbols/outline';
+import { matHomeOutline, matFiberNewOutline, matAutorenewFillOutline, matDoNotDisturbOnOutline } from '@ng-icons/material-symbols/outline';
 import { provideZard } from '@/shared/core/provider/providezard';
 
 export const appConfig: ApplicationConfig = {
@@ -21,6 +21,6 @@ export const appConfig: ApplicationConfig = {
         provideHttpClient(withInterceptors([loaderInterceptor]), withInterceptorsFromDi()),
         provideNgIconsConfig({ size: '1em' }),
         provideZard(),
-        provideIcons({ matChevronBackwardSharp, lucideMartini, lucideAward, lucideSun, lucideMoon, matFiberNewOutline, matAutorenewFillOutline, matDoNotDisturbOnOutline }),
+        provideIcons({ matChevronBackwardSharp, lucideMartini, lucideAward, lucideSun, lucideMoon, matHomeOutline, matFiberNewOutline, matAutorenewFillOutline, matDoNotDisturbOnOutline }),
     ]
 };

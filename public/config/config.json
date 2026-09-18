@@ -1,5 +1,5 @@
 {
-    "production": true,
-    "apiURL": "https://www.thecocktaildb.com/api/json/v2",
-    "apiKey": "961249867"
+    "production": false,
+    "apiURL": "{{API_URL}}",
+    "apiKey": "{{API_KEY}}"
 }

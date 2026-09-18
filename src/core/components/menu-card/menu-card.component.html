@@ -5,7 +5,7 @@
     <z-card-content>
         <div class="flex flex-col gap-4">
             <span class="text-xl text-bold">{{ menuItem().label }}</span>
-            <span>{{ menuItem().description }}</span>
+            <span>{{ menuItem().description.length ? menuItem().description : "&nbsp;" }}</span>
         </div>
     </z-card-content>
 </z-card>

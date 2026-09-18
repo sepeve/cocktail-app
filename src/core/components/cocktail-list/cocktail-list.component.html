@@ -1,0 +1,7 @@
+<div class="flex-1 overflow-y-auto h-[80dvh]">
+    <div class="grid grid-cols-5 gap-4 p-8">
+        @for(cocktail of cocktails(); track cocktail) {
+        <app-cocktail-card [cocktail]="cocktail" (cocktailClicked)="cocktailClicked.emit(cocktail)"></app-cocktail-card>
+        }
+    </div>
+</div>

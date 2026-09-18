@@ -5,24 +5,25 @@ import { DrinkService } from './drink.service';
 import { ZardButtonComponent } from '@/shared/components/button';
 import { CocktailListComponent } from '../../core/components/cocktail-list/cocktail-list.component';
 import { ZardPaginationImports } from '@/shared/components/pagination';
+import { LetterFilterComponent } from '../../core/components/letter-filter/letter-filter.component';
 
 @Component({
     selector: "app-drink",
     templateUrl: "./drink.component.html",
     providers: [DrinkStore, DrinkService],
-    imports: [ZardButtonComponent, ZardPaginationImports, CocktailListComponent]
+    imports: [ZardPaginationImports, CocktailListComponent, LetterFilterComponent]
 })
 
 export class DrinkComponent implements OnInit {
 
     drinkStore = inject(DrinkStore);
-    drinks: Signal<Drink[]> = this.drinkStore.drinks;
     loading: Signal<boolean> = this.drinkStore.loading;
-    letters = Letter;
-    letterDictionary: Signal<LetterDictionary[]> = computed(() => (Object.entries(Letter) as [keyof typeof Letter, Letter][]).map(
-        ([key, value]) => ({ key, value })
-    ));
     pages: Signal<number[]> = computed(() => Array.from({ length: this.drinkStore.totalPages() }, (_, i) => i + 1));
+    paginatedDrinks: Signal<Drink[]> = computed(() => {
+        const startIndex = (this.drinkStore.pageIndex()) * this.drinkStore.pageSize();
+        const endIndex = startIndex + this.drinkStore.pageSize();
+        return this.drinkStore.drinks().slice(startIndex, endIndex);
+    });
 
     ngOnInit(): void {
         this.loadDrinksByLetter(Letter.A);

@@ -1,3 +1,3 @@
 export const environment = {
-    configPath: "config/config.json",
+    configPath: "config/config-dev.json",
 };

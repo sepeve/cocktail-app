@@ -1,5 +1,7 @@
-<div class="grid grid-cols-3 gap-8">
-    @for (menuItem of menu(); track menuItem) {
+<div class="flex justify-center items-center h-dvh">
+    <div class="grid grid-cols-3 gap-8">
+        @for (menuItem of menu(); track menuItem) {
         <app-menu-card [menuItem]="menuItem" (menuItemClicked)="onMenuItemClicked($event)"></app-menu-card>
-    }
+        }
+    </div>
 </div>
