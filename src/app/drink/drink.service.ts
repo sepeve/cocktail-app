@@ -21,7 +21,7 @@ export class DrinkService {
     }
 
     getById(id: string): Observable<Drink | null> {
-        const url = `${this.API_URL}/lookup.php?l=${id}`;
-        return this.http.get<Drink | null>(url);
+        const url = `${this.API_URL}/lookup.php?i=${id}`;
+        return this.http.get<{ drinks: Drink[] }>(url).pipe(map(res => res.drinks && res.drinks.length > 0 ? res.drinks[0] : null));
     }
 }

@@ -1,24 +1,27 @@
 import { Component, computed, inject, OnInit, Signal } from '@angular/core';
-import { DrinkStore } from './drink.store';
-import { Drink, Letter } from '../../models';
-import { DrinkService } from './drink.service';
-import { CocktailListComponent } from '../../core/components/cocktail-list/cocktail-list.component';
 import { ZardPaginationImports } from '@/shared/components/pagination';
-import { LetterFilterComponent } from '../../core/components/letter-filter/letter-filter.component';
 import { NgTemplateOutlet } from '@angular/common';
 import { SearcherComponent } from '@/core/components/searcher/searcher.component';
 import { Subject } from 'rxjs';
+import { DrinkService } from '@/app/drink/drink.service';
+import { DrinkStore } from '@/app/drink/drink.store';
+import { CocktailListComponent } from '@/core/components/cocktail-list/cocktail-list.component';
+import { LetterFilterComponent } from '@/core/components/letter-filter/letter-filter.component';
+import { Drink, Letter, NavigationPath } from '@/models';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: "app-drink",
-    templateUrl: "./drink.component.html",
+    selector: "app-drink-list",
+    templateUrl: "./drink-list.component.html",
     providers: [DrinkStore, DrinkService],
     imports: [ZardPaginationImports, CocktailListComponent, LetterFilterComponent, SearcherComponent],
 })
 
-export class DrinkComponent implements OnInit {
+export class DrinkListComponent implements OnInit {
 
     drinkStore = inject(DrinkStore);
+    router = inject(Router);
+
     loading: Signal<boolean> = this.drinkStore.loading;
     pages: Signal<number[]> = computed(() => Array.from({ length: this.drinkStore.totalPages() }, (_, i) => i + 1));
     paginatedDrinks: Signal<Drink[]> = computed(() => {
@@ -46,10 +49,10 @@ export class DrinkComponent implements OnInit {
     }
 
     onDrinkClicked(drink: Drink): void {
-        console.log(drink);
+        this.router.navigate([NavigationPath.Drink, drink.idDrink]);
     }
 
     private loadDrinksByLetter(letter: Letter): void {
-        this.drinkStore.loadDrinksByLeter(letter);
+        this.drinkStore.loadDrinksByLetter(letter);
     }
 }

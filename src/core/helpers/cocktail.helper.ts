@@ -10,3 +10,14 @@ export function getCocktailIngredients(cocktail: Drink): string[] {
     }
     return ingredients;
 }
+
+export function getCocktailMeasures(cocktail: Drink): string[] {
+    const measures: string[] = [];
+    for (let i = 1; i <= 15; i++) {
+        const measure = cocktail[`strMeasure${i}` as keyof Drink];
+        if (measure?.length) {
+            measures.push(measure);
+        }
+    }
+    return measures;
+}

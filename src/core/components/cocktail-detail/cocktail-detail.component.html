@@ -1,0 +1,68 @@
+<div class="flex gap-2">
+    <button class="cursor-pointer" type="button" z-button zType="outline" aria-label="Go back"
+        (click)="backClicked.emit()">
+        <ng-icon name="arrowLeft" />
+    </button>
+    <h1 class="text-2xl font-bold">{{ cocktail().strDrink }}</h1>
+</div>
+
+<div class="overflow-y-auto h-[95dvh] p-6">
+    <div class="flex flex-col gap-8">
+        <z-card zType="outlined" class="flex flex-col gap-4">
+            <img [src]="cocktail().strDrinkThumb" [alt]="cocktail().strDrink" />
+
+            <div z-card-content>
+                <div class="flex flex-col gap-8">
+                    <ng-template [ngTemplateOutlet]="dataTemplate"></ng-template>
+                    <ng-template [ngTemplateOutlet]="ingredientsTemplate"></ng-template>
+                    <ng-template [ngTemplateOutlet]="instructionsTemplate"></ng-template>
+                </div>
+            </div>
+        </z-card>
+    </div>
+</div>
+
+<ng-template #dataTemplate>
+    <div class="flex gap-4">
+        <z-item zVariant="outline">
+            <z-item-content>
+                <z-item-title>Category</z-item-title>
+                <z-item-description>{{ cocktail().strCategory }}</z-item-description>
+            </z-item-content>
+        </z-item>
+        <z-item zVariant="outline">
+            <z-item-content>
+                <z-item-title>Glass</z-item-title>
+                <z-item-description>{{ cocktail().strGlass }}</z-item-description>
+            </z-item-content>
+        </z-item>
+    </div>
+</ng-template>
+
+<ng-template #ingredientsTemplate>
+    <div class="flex flex-col gap-2">
+        <h3>Ingredients</h3>
+        <div z-card zType="outlined">
+            <div z-card-content class="flex flex-col gap-2">
+                @for(ingredient of ingredients(); track ingredient; let idx = $index) {
+                <div class="flex gap-2">
+                    <span>{{ measures()[idx] }}</span>
+                    <span>{{ ingredient }}</span>
+                </div>
+                @if(idx !== ingredients().length - 1) { <z-separator /> }
+                }
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #instructionsTemplate>
+    <div class="flex flex-col gap-2">
+        <h3>Instructions</h3>
+        <div z-card zType="outlined">
+            <div z-card-content>
+                <p>{{ cocktail().strInstructions }}</p>
+            </div>
+        </div>
+    </div>
+</ng-template>

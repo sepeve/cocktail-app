@@ -1,0 +1,7 @@
+<div class="flex justify-center mt-8">
+    @if (drink(); as drink){
+    <app-cocktail-detail [cocktail]="drink" (backClicked)="onBackClicked()"></app-cocktail-detail>
+    } @else {
+    <app-cocktail-skeleton></app-cocktail-skeleton>
+    }
+</div>

@@ -4,5 +4,6 @@ export enum NavigationPath {
     Signature = "signature",
     Latest = "latest",
     Random = "random",
-    Mocktail = "mocktail"
+    Mocktail = "mocktail",
+    Id = ":id"
 }
