@@ -1,4 +1,4 @@
-import { Component, input, output, OutputEmitterRef, Signal } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Drink } from '../../../models';
 import { CocktailCardComponent } from '../cocktail-card/cocktail-card.component';
 

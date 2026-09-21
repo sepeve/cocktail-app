@@ -1,22 +1,35 @@
-<z-drawer [zVisible]="sidenavOpened()" (zVisibleChange)="sidenavClose.emit()" zPlacement="left">
-    <div class="flex flex-col p-4 gap-4 text-lg">
-        @for(menuItem of menu(); track menuItem) {
-        <a [routerLink]="menuItem.path" routerLinkActive="font-semibold"
-            class="flex items-center gap-2 cursor-pointer hover:font-semibold" href="javascript:void(0);">
-            <ng-icon [name]="menuItem.icon" />
-            <span>{{ menuItem.label }}</span>
-        </a>
-        }
-    </div>
-    <z-drawer-footer>
-        <div class="flex justify-between">
-            <button class="cursor-pointer" z-button zType="ghost" zSize="sm" (click)="toggleTheme()">
-                <ng-icon [name]="darkMode.themeMode() === 'dark' ? 'sun': 'moon'" size="1.5rem" />
+<z-sidebar-provider zDefaultOpen="true" class="relative h-dvh min-h-0 transform-gpu overflow-hidden rounded-xl border">
+    <z-sidebar zCollapsible="icon" class="h-full">
+        <z-sidebar-content>
+            <div z-sidebar-group>
+                <div z-sidebar-group-content>
+                    <ul z-sidebar-menu>
+                        @for(menuItem of menu(); track menuItem) {
+                        <li z-sidebar-menu-item>
+                            <a z-sidebar-menu-button [routerLink]="menuItem.path" routerLinkActive="font-semibold"
+                                class="flex items-center gap-2 cursor-pointer hover:font-semibold"
+                                href="javascript:void(0);">
+                                <ng-icon [name]="menuItem.icon" />
+                                <span>{{ menuItem.label }}</span>
+                            </a>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </z-sidebar-content>
+        <z-sidebar-footer class="flex items-start pl-4">
+            <button class="cursor-pointer" z-button zType="ghost" zSize="sm" (click)="darkMode.toggleTheme()">
+                <ng-icon [name]="darkMode.themeMode() === 'dark' ? 'sun': 'moon'" />
                 <span class="sr-only">Toggle theme</span>
             </button>
-            <button class="cursor-pointer" type="button" z-button zType="outline" z-drawer-close>
-                <ng-icon name="chevronLeft" size="2rem" />
-            </button>
-        </div>
-    </z-drawer-footer>
-</z-drawer>
+        </z-sidebar-footer>
+    </z-sidebar>
+
+    <main z-sidebar-inset class="p-4">
+        <button z-sidebar-trigger class="self-start" aria-label="Toggle Sidebar" [hasIcon]="false">
+            <img class="size-8 cursor-pointer logo-glass" src="/images/logo_glass.png" alt="logo" />
+        </button>
+        <ng-content></ng-content>
+    </main>
+</z-sidebar-provider>

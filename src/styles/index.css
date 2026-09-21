@@ -4,6 +4,7 @@
 @import './variables';
 @import "./theme";
 @import "./layer";
+@import "./components";
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
