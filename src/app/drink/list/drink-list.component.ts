@@ -45,7 +45,7 @@ export class DrinkListComponent implements OnInit {
     }
 
     onSearch(name: string): void {
-        this.drinkStore.loadDrinks(name);
+        this.drinkStore.get(name);
     }
 
     onDrinkClicked(drink: Drink): void {
@@ -53,6 +53,6 @@ export class DrinkListComponent implements OnInit {
     }
 
     private loadDrinksByLetter(letter: Letter): void {
-        this.drinkStore.loadDrinksByLetter(letter);
+        this.drinkStore.getByLetter(letter);
     }
 }

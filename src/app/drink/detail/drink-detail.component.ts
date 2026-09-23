@@ -21,14 +21,16 @@ export class DrinkDetailComponent implements OnInit {
     drink: Signal<Drink | null> = this.drinkStore.drink;
 
     id: string | null = this.activatedRoute.snapshot.paramMap.get('id');
+    path: string | null = this.activatedRoute.snapshot.paramMap.get('path');
 
     ngOnInit(): void {
         if (this.id) {
-            this.drinkStore.loadDrink(this.id);
+            this.drinkStore.getById(this.id);
         }
     }
 
     onBackClicked(): void {
-        this.router.navigateByUrl(NavigationPath.Drink);
+        const path = this.path || NavigationPath.Drink;
+        this.router.navigateByUrl(path);
     }
 }

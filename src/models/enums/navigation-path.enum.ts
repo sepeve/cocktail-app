@@ -5,5 +5,6 @@ export enum NavigationPath {
     Latest = "latest",
     Random = "random",
     Mocktail = "mocktail",
-    Id = ":id"
+    Id = ":id",
+    BackPath = ":path"
 }

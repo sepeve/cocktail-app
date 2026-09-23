@@ -1,0 +1,8 @@
+<div class="max-w-[50dvw] m-auto mt-8">
+    @if (loading()){
+    <app-cocktail-skeleton></app-cocktail-skeleton>
+    } @else {
+    <app-cocktail-carousel [cocktails]="drinks()" (cocktailClicked)="onDrinkClicked($event)"></app-cocktail-carousel>
+
+    }
+</div>

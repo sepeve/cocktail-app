@@ -6,9 +6,9 @@ import { Drink, Letter } from '../../models';
 
 @Injectable()
 export class DrinkService {
-    http: HttpClient = inject(HttpClient);
-    appConfig: AppConfigService = inject(AppConfigService);
-    API_URL = `${this.appConfig.apiURL}/${this.appConfig.apiKey}`;
+    private readonly http: HttpClient = inject(HttpClient);
+    private readonly appConfig: AppConfigService = inject(AppConfigService);
+    private readonly API_URL = `${this.appConfig.apiURL}/${this.appConfig.apiKey}`;
 
     get(name: string): Observable<Drink[]> {
         const url = `${this.API_URL}/search.php?s=${name}`;

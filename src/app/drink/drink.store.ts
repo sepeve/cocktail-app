@@ -1,9 +1,9 @@
 import { patchState, signalStore, withMethods, withProps, withState } from '@ngrx/signals';
-import { Drink, Letter } from '../../models';
+import { BaseStoreState, Drink, Letter } from '../../models';
 import { DrinkService } from './drink.service';
 import { inject } from '@angular/core';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { debounceTime, delay, pipe, switchMap, tap } from 'rxjs';
+import { delay, pipe, switchMap, tap } from 'rxjs';
 import { tapResponse } from '@ngrx/operators';
 import { withLogger } from '@/shared/@store/with-logger';
 import { withPagination } from '@/shared/@store/with-pagination';
@@ -11,16 +11,16 @@ import { Title } from '@angular/platform-browser';
 
 const STORE_NAME: string = "DrinkStore";
 
-interface DrinkState {
+interface DrinkState extends BaseStoreState {
     drinks: Drink[],
     drink: Drink | null,
-    loading: boolean
 }
 
 const initialState: DrinkState = {
     drinks: [],
     drink: null,
     loading: false,
+    error: null
 }
 
 export const DrinkStore = signalStore(
@@ -32,7 +32,7 @@ export const DrinkStore = signalStore(
     })),
     withPagination({ pageSize: 25 }),
     withMethods(((store) => ({
-        loadDrinks: rxMethod<string>(
+        get: rxMethod<string>(
             pipe(
                 tap(() => {
                     patchState(store, { ...initialState, loading: true });
@@ -45,8 +45,8 @@ export const DrinkStore = signalStore(
                                 store.setTotalItems(drinks.length);
                                 patchState(store, { drinks })
                             },
-                            error: (err) => {
-                                patchState(store, { drinks: [] });
+                            error: (err: string) => {
+                                patchState(store, { drinks: [], error: err });
                                 store.setTotalItems(0);
                                 console.log(err);
                             },
@@ -59,7 +59,7 @@ export const DrinkStore = signalStore(
             )
         ),
 
-        loadDrinksByLetter: rxMethod<Letter>(
+        getByLetter: rxMethod<Letter>(
             pipe(
                 tap(() => {
                     patchState(store, { ...initialState, loading: true });
@@ -72,8 +72,8 @@ export const DrinkStore = signalStore(
                                 store.setTotalItems(drinks.length);
                                 patchState(store, { drinks });
                             },
-                            error: (err) => {
-                                patchState(store, { drinks: [] });
+                            error: (err: string) => {
+                                patchState(store, { drinks: [], error: err });
                                 store.setTotalItems(0);
                                 console.log(err);
                             },
@@ -86,7 +86,7 @@ export const DrinkStore = signalStore(
             )
         ),
 
-        loadDrink: rxMethod<string>(
+        getById: rxMethod<string>(
             pipe(
                 tap(() => {
                     patchState(store, { drink: null, loading: true });
@@ -102,8 +102,8 @@ export const DrinkStore = signalStore(
                                     store._titleService.setTitle(drink.strDrink);
                                 }
                             },
-                            error: (err) => {
-                                patchState(store, { drink: null });
+                            error: (err: string) => {
+                                patchState(store, { drink: null, error: err });
                                 store._titleService.setTitle('Cocktail App - Drink');
                                 console.log(err);
                             },
