@@ -1,0 +1,29 @@
+<div class="flex flex-col items-center">
+
+    <app-cocktail-list [cocktails]="paginatedDrinks()" (cocktailClicked)="onDrinkClicked($event)"></app-cocktail-list>
+
+    <z-pagination class="my-4" [zTotal]="mocktailStore.totalPages()" [zPageIndex]="mocktailStore.pageIndex()"
+        [zContent]="content" />
+</div>
+
+<ng-template #content>
+    <ul z-pagination-content>
+        <li z-pagination-item>
+            <z-pagination-previous class="cursor-pointer" (click)="mocktailStore.nextPage()"
+                [zDisabled]="!mocktailStore.hasPrevPage()" />
+        </li>
+        @for (page of pages(); track page) {
+        <li z-pagination-item>
+            <button type="button" z-pagination-button class="cursor-pointer"
+                [zActive]="page === mocktailStore.pageIndex() + 1" (click)="mocktailStore.setPage(page - 1)">
+                <span class="sr-only">To page</span>
+                {{ page }}
+            </button>
+        </li>
+        }
+        <li z-pagination-item>
+            <z-pagination-next class="cursor-pointer" (click)="mocktailStore.nextPage()"
+                [zDisabled]="!mocktailStore.hasNextPage()" />
+        </li>
+    </ul>
+</ng-template>

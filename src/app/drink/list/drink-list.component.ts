@@ -1,6 +1,5 @@
-import { Component, computed, inject, OnInit, Signal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit, Signal } from '@angular/core';
 import { ZardPaginationImports } from '@/shared/components/pagination';
-import { NgTemplateOutlet } from '@angular/common';
 import { SearcherComponent } from '@/core/components/searcher/searcher.component';
 import { Subject } from 'rxjs';
 import { DrinkService } from '@/app/drink/drink.service';
@@ -17,7 +16,7 @@ import { Router } from '@angular/router';
     imports: [ZardPaginationImports, CocktailListComponent, LetterFilterComponent, SearcherComponent],
 })
 
-export class DrinkListComponent implements OnInit {
+export class DrinkListComponent implements OnInit, OnDestroy {
 
     drinkStore = inject(DrinkStore);
     router = inject(Router);
@@ -48,8 +47,8 @@ export class DrinkListComponent implements OnInit {
         this.drinkStore.get(name);
     }
 
-    onDrinkClicked(drink: Drink): void {
-        this.router.navigate([NavigationPath.Drink, drink.idDrink]);
+    onDrinkClicked({ idDrink }: Drink): void {
+        this.router.navigate([NavigationPath.Drink, idDrink]);
     }
 
     private loadDrinksByLetter(letter: Letter): void {

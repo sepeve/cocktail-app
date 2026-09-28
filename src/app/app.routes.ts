@@ -7,12 +7,14 @@ import { NavigationPath } from '@/models';
 import { RandomService } from '@/core/services/random.service';
 import { inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { MOCKTAIL_ROUTES } from '@/app/mocktail/mocktail.routes';
 
 export const routes: Routes = [
     ...HOME_ROUTES,
     ...DRINK_ROUTES,
     ...SIGNATURE_ROUTES,
     ...LATEST_ROUTES,
+    ...MOCKTAIL_ROUTES,
     {
         path: NavigationPath.Random,
         pathMatch: "full",
