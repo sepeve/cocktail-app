@@ -8,13 +8,13 @@ import { MenuService } from '../services/menu.service';
 import { inject } from '@angular/core';
 import { withLogger } from '@/shared/@store/with-logger';
 
-const STORE_NAME: string = "CoreStore";
+const STORE_NAME = "CoreStore";
 
 interface CoreState {
     colorScheme: ColorScheme;
     isLoading: boolean;
     isSidenavHidden: boolean;
-    menu: Array<Menu>;
+    menu: Menu[];
 }
 
 const initialState: CoreState = {

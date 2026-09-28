@@ -20,7 +20,7 @@ export function loaderInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn
             loaderService.hideLoading(url);
             throw new Error(e);
         }),
-        tap((evt: any) => {
+        tap((evt: HttpEvent<unknown>) => {
             if (evt instanceof HttpResponse) {
                 loaderService.hideLoading(url);
             }

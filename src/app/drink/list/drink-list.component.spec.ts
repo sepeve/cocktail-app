@@ -17,7 +17,7 @@ class LetterFilterStubComponent {
 class SearcherStubComponent {
     placeholder = input.required<string>();
     reset = input<Subject<void>>();
-    search = output<string>();
+    searchEvent = output<string>();
 }
 
 @Component({ selector: 'app-cocktail-list', standalone: true, template: '' })
@@ -109,7 +109,7 @@ describe('DrinkListComponent', () => {
         expect(searcher.placeholder()).toBe('Search for a drink...');
         expect(searcher.reset()).toBe(component.letterChanged);
 
-        searcher.search.emit('margarita');
+        searcher.searchEvent.emit('margarita');
         expect(store.get).toHaveBeenCalledWith('margarita');
 
         letterFilter.letterClicked.emit(Letter.M);

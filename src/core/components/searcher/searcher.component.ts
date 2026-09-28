@@ -16,7 +16,7 @@ export class SearcherComponent implements OnInit {
 
     placeholder = input.required<string>();
     reset = input<Subject<void>>();
-    search = output<string>();
+    searchEvent = output<string>();
 
     searchCtrl: FormControl = new FormControl('');
 
@@ -34,7 +34,7 @@ export class SearcherComponent implements OnInit {
             distinctUntilChanged()
         )
             .subscribe((value: string) => {
-                this.search.emit(value);
+                this.searchEvent.emit(value);
             });
     }
 

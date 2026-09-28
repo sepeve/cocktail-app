@@ -1,7 +1,7 @@
 <div class="flex flex-col items-center">
     <app-letter-filter (letterClicked)="onLetterClick($event)"></app-letter-filter>
 
-    <app-searcher class="my-4 w-fit" [placeholder]="'Search for a drink...'" (search)="onSearch($event)"
+    <app-searcher class="my-4 w-fit" [placeholder]="'Search for a drink...'" (searchEvent)="onSearch($event)"
         [reset]="letterChanged"></app-searcher>
 
     <app-cocktail-list [cocktails]="paginatedDrinks()" (cocktailClicked)="onDrinkClicked($event)"></app-cocktail-list>

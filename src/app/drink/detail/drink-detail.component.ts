@@ -5,7 +5,7 @@ import { Component, DestroyRef, inject, OnInit, Signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CocktailDetailComponent } from '@/core/components/cocktail-detail/cocktail-detail.component';
 import { CocktailSkeletonComponent } from '@/core/components/cocktail-skeleton/cocktail-skeleton.component';
-import { map, filter, switchMap, tap } from 'rxjs';
+import { map, filter, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({

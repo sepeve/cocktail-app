@@ -22,7 +22,7 @@ export class AppConfigService {
     }
 
     public loadConfig(url: string) {
-        return new Promise<boolean>((resolve, _) => {
+        return new Promise<boolean>((resolve) => {
             const xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = () => {
                 const { readyState, status, response } = xhttp;

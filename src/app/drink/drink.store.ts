@@ -9,7 +9,7 @@ import { withLogger } from '@/shared/@store/with-logger';
 import { withPagination } from '@/shared/@store/with-pagination';
 import { Title } from '@angular/platform-browser';
 
-const STORE_NAME: string = "DrinkStore";
+const STORE_NAME = "DrinkStore";
 
 interface DrinkState extends BaseStoreState {
     drinks: Drink[],

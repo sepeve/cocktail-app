@@ -1,7 +1,6 @@
 import { Letter } from '../enums';
 
-
-export type LetterDictionary = {
+export interface LetterDictionary {
     key: keyof typeof Letter;
     value: Letter;
-};
+}
